@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task4-deploy
+  labels:
+    app: kubapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubapp
+  template:
+    metadata:
+      labels:
+        app: kubapp
+    spec:
+      containers:
+        - name: task4-httpd
+          image: satyams1999/httpd_image:v1
+          imagePullPolicy: "Always"
+      nodeSelector:
+        kubernetes.io/hostname: minikube      
+        
